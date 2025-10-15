@@ -7,7 +7,7 @@ const app = express()
 const mongoose = require('mongoose')
 const passport = require('passport')           // Main Passport.js library for authentication
 const session = require('express-session')    // Session management for user persistence
-const MongoStore = require('connect-mongo')(session) // Store sessions in MongoDB
+const MongoStore = require('connect-mongo')(session)   // Store sessions in MongoDB (compatible with v3.2.0)
 const flash = require('express-flash')        // Flash messages for user feedback
 const logger = require('morgan')
 const connectDB = require('./config/database')
@@ -16,6 +16,17 @@ const movieRoutes = require('./routes/movies')
 
 // Load environment variables from .env file
 require('dotenv').config({path: './config/.env'})
+
+// Ensure required environment variables are present
+if (!process.env.DB_STRING) {
+  console.error('ERROR: DB_STRING environment variable is required')
+  process.exit(1)
+}
+
+if (!process.env.SESSION_SECRET) {
+  console.error('ERROR: SESSION_SECRET environment variable is required')
+  process.exit(1)
+}
 
 // PASSPORT.JS CONFIGURATION
 // =========================
@@ -44,7 +55,7 @@ app.use(
       resave: false,                    // Don't save session if unmodified
       saveUninitialized: false,         // Don't create session until something stored
       store: new MongoStore({ 
-        mongooseConnection: mongoose.connection // Store sessions in MongoDB (persists across server restarts)
+        mongooseConnection: mongoose.connection // Store sessions in MongoDB (compatible with v3.2.0)
       }),
     })
   )

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A full-stack movie watchlist application built with MVC architecture, featuring user authentication and personalized movie tracking with beautiful responsive design.",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.x"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
