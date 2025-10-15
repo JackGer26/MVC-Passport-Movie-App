@@ -14,17 +14,21 @@ const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const movieRoutes = require('./routes/movies')
 
-// Load environment variables from .env file
-require('dotenv').config({path: './config/.env'})
+// Load environment variables from .env file (only in development)
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({path: './config/.env'})
+}
 
 // Ensure required environment variables are present
 if (!process.env.DB_STRING) {
   console.error('ERROR: DB_STRING environment variable is required')
+  console.error('Please set DB_STRING in your hosting service environment variables')
   process.exit(1)
 }
 
 if (!process.env.SESSION_SECRET) {
   console.error('ERROR: SESSION_SECRET environment variable is required')
+  console.error('Please set SESSION_SECRET in your hosting service environment variables')
   process.exit(1)
 }
 
