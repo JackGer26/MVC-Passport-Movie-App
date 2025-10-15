@@ -19,6 +19,12 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({path: './config/.env'})
 }
 
+// Debug: Log environment info
+console.log('Environment:', process.env.NODE_ENV || 'development')
+console.log('Port:', process.env.PORT || 2121)
+console.log('DB_STRING exists:', !!process.env.DB_STRING)
+console.log('SESSION_SECRET exists:', !!process.env.SESSION_SECRET)
+
 // Ensure required environment variables are present
 if (!process.env.DB_STRING) {
   console.error('ERROR: DB_STRING environment variable is required')
@@ -40,6 +46,17 @@ require('./config/passport')(passport)
 
 // Connect to MongoDB database
 connectDB()
+
+// Add error handling for uncaught exceptions
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error)
+  process.exit(1)
+})
+
+process.on('unhandledRejection', (error) => {
+  console.error('Unhandled Rejection:', error)
+  process.exit(1)
+})
 
 // BASIC EXPRESS MIDDLEWARE SETUP
 // ==============================
@@ -79,7 +96,13 @@ app.use(flash())
 // ===================
 app.use('/', mainRoutes)     // Routes for authentication (login, signup, logout)
 app.use('/movies', movieRoutes) // Protected routes for movie watchlist functionality
+
+const PORT = process.env.PORT || 2121
  
-app.listen(process.env.PORT || 2121, ()=>{
-    console.log('Movie Watchlist Server is running, you better catch it!')
+app.listen(PORT, ()=>{
+    console.log(`Movie Watchlist Server is running on port ${PORT}!`)
+    console.log('Server startup successful!')
+}).on('error', (error) => {
+    console.error('Server failed to start:', error)
+    process.exit(1)
 })    
