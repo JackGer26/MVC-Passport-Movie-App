@@ -40,7 +40,7 @@ app.use(logger('dev'))                      // HTTP request logging
 // They store user authentication state between requests
 app.use(
     session({
-      secret: 'keyboard cat',           // Secret key for signing session cookies (should be in .env!)
+      secret: process.env.SESSION_SECRET,  // Secret key for signing session cookies from environment variable
       resave: false,                    // Don't save session if unmodified
       saveUninitialized: false,         // Don't create session until something stored
       store: new MongoStore({ 
@@ -65,6 +65,6 @@ app.use(flash())
 app.use('/', mainRoutes)     // Routes for authentication (login, signup, logout)
 app.use('/movies', movieRoutes) // Protected routes for movie watchlist functionality
  
-app.listen(process.env.PORT, ()=>{
-    console.log('Server is running, you better catch it!')
+app.listen(process.env.PORT || 2121, ()=>{
+    console.log('Movie Watchlist Server is running, you better catch it!')
 })    
