@@ -12,7 +12,7 @@ const flash = require('express-flash')        // Flash messages for user feedbac
 const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const todoRoutes = require('./routes/todos')
+const movieRoutes = require('./routes/movies')
 
 // Load environment variables from .env file
 require('dotenv').config({path: './config/.env'})
@@ -63,7 +63,7 @@ app.use(flash())
 // ROUTE CONFIGURATION
 // ===================
 app.use('/', mainRoutes)     // Routes for authentication (login, signup, logout)
-app.use('/todos', todoRoutes) // Protected routes for todo functionality
+app.use('/movies', movieRoutes) // Protected routes for movie watchlist functionality
  
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')

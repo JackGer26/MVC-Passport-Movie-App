@@ -16,7 +16,7 @@ exports.getLogin = (req, res) => {
     // req.user is populated by Passport.js if user is authenticated
     if (req.user) {
       // User is already logged in - redirect to main app
-      return res.redirect('/todos')
+      return res.redirect('/movies')
     }
     
     // User is not logged in - show login page
@@ -70,9 +70,9 @@ exports.getLogin = (req, res) => {
         // Show success message and redirect user
         req.flash('success', { msg: 'Success! You are logged in.' })
         
-        // Redirect to intended page (if they were redirected to login) or default to /todos
+        // Redirect to intended page (if they were redirected to login) or default to /movies
         // req.session.returnTo stores the original URL they were trying to access
-        res.redirect(req.session.returnTo || '/todos')
+        res.redirect(req.session.returnTo || '/movies')
       })
     })(req, res, next) // Immediately invoke the middleware function
   }
@@ -112,7 +112,7 @@ exports.getLogin = (req, res) => {
     // Check if user is already logged in
     if (req.user) {
       // User is already authenticated - redirect to main app
-      return res.redirect('/todos')
+      return res.redirect('/movies')
     }
     
     // User is not logged in - show signup page
@@ -183,7 +183,7 @@ exports.getLogin = (req, res) => {
             return next(err)
           }
           // Redirect to main app - user is now registered and logged in
-          res.redirect('/todos')
+          res.redirect('/movies')
         })
       })
     })

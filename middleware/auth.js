@@ -32,7 +32,7 @@ module.exports = {
         return next()
       } else {
         // If user IS authenticated, redirect them away from guest-only pages
-        res.redirect('/todos') // Redirect to their dashboard/main app
+        res.redirect('/movies') // Redirect to their dashboard/main app
       }
     }
   }
