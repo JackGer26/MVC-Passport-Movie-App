@@ -5,6 +5,10 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+
+// Set mongoose strictQuery to suppress deprecation warning
+mongoose.set('strictQuery', false)
+
 const passport = require('passport')           // Main Passport.js library for authentication
 const session = require('express-session')    // Session management for user persistence
 const MongoStore = require('connect-mongo')(session)   // Store sessions in MongoDB (compatible with v3.2.0)
@@ -31,6 +35,14 @@ console.log('SESSION_SECRET exists:', !!process.env.SESSION_SECRET)
 if (!process.env.DB_STRING) {
   console.error('ERROR: DB_STRING environment variable is required')
   console.error('Please set DB_STRING in your hosting service environment variables')
+  process.exit(1)
+}
+
+// Validate DB_STRING format
+if (!process.env.DB_STRING.startsWith('mongodb://') && !process.env.DB_STRING.startsWith('mongodb+srv://')) {
+  console.error('ERROR: DB_STRING must start with "mongodb://" or "mongodb+srv://"')
+  console.error('Current DB_STRING starts with:', process.env.DB_STRING.substring(0, 20) + '...')
+  console.error('Please check your DB_STRING environment variable in Render')
   process.exit(1)
 }
 
