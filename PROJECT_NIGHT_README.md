@@ -2,7 +2,7 @@
 
 This is a full-stack web application developed as a project night transformation that implements a personal movie watchlist with user authentication. Users can create accounts, log in securely, and manage their personal collection of movies they want to watch, marking them as watched or unwatched with a beautiful, modern interface.
 
-Link to Project: [Add your deployed link here when ready]
+Link to Project: https://movie-watch-list-myvh.onrender.com/movies
 
 ## How It's Made:
 
