@@ -23,6 +23,8 @@ if (process.env.NODE_ENV !== 'production') {
 console.log('Environment:', process.env.NODE_ENV || 'development')
 console.log('Port:', process.env.PORT || 2121)
 console.log('DB_STRING exists:', !!process.env.DB_STRING)
+console.log('DB_STRING starts with mongodb:', process.env.DB_STRING ? process.env.DB_STRING.startsWith('mongodb') : 'N/A')
+console.log('DB_STRING length:', process.env.DB_STRING ? process.env.DB_STRING.length : 'N/A')
 console.log('SESSION_SECRET exists:', !!process.env.SESSION_SECRET)
 
 // Ensure required environment variables are present
