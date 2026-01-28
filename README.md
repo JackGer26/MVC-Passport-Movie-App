@@ -4,6 +4,10 @@ This is a full-stack web application developed as a project night transformation
 
 Link to Project: https://movie-watch-list-myvh.onrender.com/movies
 
+## 📸 Preview
+
+![Movie Watchlist Tracker Screenshot](./public/app-screenshot.png)
+
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, Node.js, Express.js, MongoDB, Mongoose, Passport.js, EJS
