@@ -81,3 +81,9 @@ This would ensure users experience the polished movie theme from the moment they
 **Error Handling & Debugging:** Implementing comprehensive error handling on both frontend and backend, along with proper logging and user feedback, demonstrated how crucial proper error management is for production applications. Learning to debug authentication flows and database operations was particularly valuable.
 
 In summary, this project provided hands-on experience with modern web development practices including secure authentication, database design, responsive UI development, and full-stack architecture. The transformation approach highlighted how solid architectural foundations enable rapid feature development and application evolution.
+
+## 🔗 Examples of Other Work
+
+- **[100Jobs React Board](https://github.com/JackGer26/100Jobs)** - React SPA demonstrating component architecture and modern frontend patterns
+- **[Rock Paper Scissors Lizard Spock](https://github.com/JackGer26/Rock-Paper-Scissors-Lizard-Spock)** - Full-stack Node.js game with client-server communication
+- **[Portfolio Website](https://github.com/JackGer26/portfolio)** - Modern React portfolio showcasing technical projects and skills
